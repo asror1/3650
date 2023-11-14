@@ -1,0 +1,105 @@
+main {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--nav-height));
+}
+.row {
+  flex: 1;
+  display: flex;
+}
+.bathrooms {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: transform 1s ease-in-out;
+  background-color: rgb(109, 30, 57);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-top: 15px solid #6d1e39;
+}
+.bathroom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #fffff0;
+  width: fit-content;
+  & .name {
+    font-size: 90%;
+    margin-bottom: 0.3rem;
+  }
+  & a {
+    margin-top: 0.3rem;
+    font-size: 65%;
+    text-decoration: underline;
+  }
+}
+.ingersol,
+.boylan,
+.library {
+  background-size: cover;
+  background-position: center;
+  border: 15px solid #6d1e39;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  & h1 {
+    z-index: 2;
+    transition: scale 0.5s ease-in-out;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-in-out;
+}
+.ingersol:hover > h1,
+.boylan:hover > h1,
+.library:hover > h1 {
+  scale: 1.1;
+}
+.ingersol:hover > .overlay {
+  opacity: 0;
+}
+.ingersol:hover > .bathrooms,
+.boylan:hover > .bathrooms,
+.library:hover > .bathrooms {
+  transform: translateY(0);
+}
+.boylan:hover > .overlay {
+  opacity: 0;
+}
+.library:hover > .overlay {
+  opacity: 0;
+}
+.ingersol {
+  /*red*/
+  flex: 1;
+  background-image: url("./ingersol.jpg");
+  border-top: none;
+}
+.boylan {
+  /*green*/
+  flex: 1;
+  border-top: none;
+  border-right: none;
+  background-image: url("./boylan.jpg");
+}
+.library {
+  /*blue*/
+  flex: 1;
+  border-top: none;
+  background-image: url("./library.jpg");
+  background-position: center bottom;
+}

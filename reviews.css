@@ -1,0 +1,87 @@
+main {
+  background-color: #8a4b61;
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-block: 3rem;
+  position: relative;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.images {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding-inline: 3rem;
+  gap: 1.5rem;
+  & img {
+    width: 100%;
+    border: 5px solid var(--maroon);
+    object-fit: cover;
+    height: 100%;
+  }
+}
+.reviews {
+  width: 100%;
+  padding-inline: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.reviewInput,
+.review {
+  background-color: var(--maroon);
+}
+.r1 {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  position: relative;
+}
+.space {
+  margin-right: 0.5rem;
+}
+.review {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.5rem;
+  gap: 1rem;
+}
+.reviewInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.5rem;
+  gap: 1rem;
+  --bg: #460c20;
+  & button {
+    position: absolute;
+    right: 0;
+    background-color: var(--bg);
+  }
+  & .comment {
+    display: flex;
+    flex-direction: column;
+  }
+  & input {
+    padding: 0.5rem;
+    background-color: var(--bg);
+    border: none;
+    outline: none;
+  }
+  & #reviewer_rating {
+    width: 60px;
+    text-align: center;
+  }
+  & textarea {
+    background-color: var(--bg);
+    border: none;
+    outline: none;
+  }
+}
