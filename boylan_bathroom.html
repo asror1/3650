@@ -5,6 +5,57 @@
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="reviews.css" />
     <title>Boylan 2143 Bathroom</title>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const leaveReviewButton = document.querySelector('button');
+        leaveReviewButton.addEventListener('click', function () {
+          const reviewerName = document.getElementById('reviewer_name').value || 'Anon';
+          const reviewerRating = parseInt(document.getElementById('reviewer_rating').value, 10);
+          const reviewerComment = document.getElementById('reviwer_comment').value;
+
+          if (isNaN(reviewerRating) || reviewerName === '' || reviewerComment === '') {
+            alert('Please provide a valid rating and do not leave any inputs blank before adding a review');
+            return;
+          }
+
+          const newReviewDiv = document.createElement('div');
+          newReviewDiv.classList.add('review');
+
+          newReviewDiv.innerHTML = `
+            <h2>${reviewerName}</h2>
+            <h4>${reviewerRating}/5</h4>
+            <p>${reviewerComment}</p>
+          `;
+
+          const lastHrElement = document.querySelector('.reviews hr:last-of-type');
+          lastHrElement.insertAdjacentElement('afterend', newReviewDiv);
+
+          updateOverallRating();
+          
+          document.getElementById('reviewer_name').value = '';
+          document.getElementById('reviewer_rating').value = '';
+          document.getElementById('reviwer_comment').value = '';
+        });
+
+        function updateOverallRating() {
+          const reviewElements = document.querySelectorAll('.review');
+
+          let totalRating = 0;
+          let numberOfReviews = reviewElements.length;
+
+          reviewElements.forEach(function (reviewElement) {
+            const rating = parseInt(reviewElement.querySelector('h4').textContent, 10);
+            totalRating += rating;
+          });
+
+          const averageRating = numberOfReviews > 0 ? totalRating / numberOfReviews : 0;
+
+          const overallRatingElement = document.querySelector('.info h1');
+          overallRatingElement.textContent = `${averageRating.toFixed(1)}/5 Stars`;
+        }
+      });
+    </script>
   </head>
 
   <body>
@@ -48,6 +99,8 @@
                 type="number"
                 name="reviewer_rating"
                 id="reviewer_rating"
+                min="0"
+                max="5"
               />
             </span>
             <button>Leave Review</button>
@@ -60,7 +113,7 @@
         <hr>
         <div class="review">
           <h2>Randy Reviewer</h2>
-          <h4>1/5</h4>
+          <h4>3/5</h4>
           <p>
             Consectetur doloremque inventore ipsa nemo exercitationem! Nihil
             deserunt velit neque iusto magnam. Minima enim minima ab aliquid
@@ -69,7 +122,7 @@
         </div>
         <div class="review">
           <h2>Anon</h2>
-          <h4>1/5</h4>
+          <h4>3/5</h4>
           <p>
             Elit amet neque sed consequuntur eaque ex. Tempore fugiat harum
             repudiandae officia libero in pariatur expedita? Ipsum delectus
