@@ -9,20 +9,29 @@ function notify(message) {
 
   }, [3000])
 }
+// ------------------------------------------------
 const reviewBtn = document.querySelector("#reviewBtn");
+const ratingInput = document.getElementById("reviewer_rating");
+const reviewerNameInput = document.getElementById("reviewer_name");
+const reviewerCommentInput = document.getElementById("reviwer_comment");
 
+ratingInput.addEventListener("input", function() {
+  const rating = parseInt(ratingInput.value, 10);
+  if(isNaN(rating) || rating > 5 || rating < 0){ 
+    notify("Please provide a valid rating between 0 and 5");
+    ratingInput.value = "";
+  }
+});
 reviewBtn.addEventListener("click", function() {
-  const reviewerName = document.getElementById("reviewer_name").value || "Anon";
-  const reviewerRating = parseInt(
-    document.getElementById("reviewer_rating").value,
-    10
-  );
-  const reviewerComment = document.getElementById("reviwer_comment").value;
 
-  if (isNaN(reviewerRating) || reviewerName === "" || reviewerComment === "") {
-    notify(
-      "Please provide a valid rating, it can't be left blank unfortunately :("
-    );
+  const reviewerName = reviewerNameInput.value || "Anon";
+
+  const reviewerRating = parseInt(ratingInput.value, 10);
+
+  const reviewerComment = reviewerCommentInput.value;
+
+  if(reviewerComment === ""){ 
+    notify("Please provide some comment, please! Otherwise our review website is going to be empty!");
     return;
   }
 
