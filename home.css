@@ -6,6 +6,7 @@ main {
 .row {
   flex: 1;
   display: flex;
+  flex-direction: row;
 }
 .bathrooms {
   position: absolute;
@@ -14,11 +15,12 @@ main {
   transition: transform 1s ease-in-out;
   background-color: rgb(109, 30, 57);
   width: 100%;
-  display: grid;
-  place-items: center;
+  display: flex; /* Change to flex */
+  justify-content: space-around; /* Adjust as needed */
+  align-items: center; /* Adjust as needed */
   border-top: 15px solid #6d1e39;
 }
-.bathroom {
+.bathroom, .add-bathroom {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,4 +104,84 @@ main {
   border-top: none;
   background-image: url("./library.jpg");
   background-position: center bottom;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(109, 30, 57);
+  padding: 20px;
+  color: white;
+  width: 50%;
+  height:50%;
+  text-align: center;
+  z-index: 999;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.popup label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.popup input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup #roomNumber {
+  color:black;
+}
+
+.popup button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #6d1e39;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #49142a;
+}
+
+.popup-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.popup-notification.show {
+  opacity: 1;
+  transform: translateY(0);
 }

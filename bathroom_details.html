@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="reviews.css" />
+    <title>Boylan 2143 Bathroom</title>
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html">
+        <h1>Find My Bathroom</h1>
+        <img src="logo.svg" alt="logo" />
+      </a>
+    </nav>
+    <main>
+      <div class="info">
+        <h2 id = "roomName"></h2>
+        <h1>0/5 Stars</h1>
+      </div>
+      <div class="carousel">
+        <div class="leftArrow"></div>
+        <div class="images">
+        </div>
+        <div class="rightArrow"></div>
+      </div>
+      <div class="reviews">
+        <div class="reviewInput">
+          <span class="r1">
+            <span>
+              <label for="reviewer_name" class="space">Name:</label>
+              <input
+                type="text"
+                placeholder='Defaults to "Anon"'
+                name="reviewer_name"
+                id="reviewer_name"
+              />
+            </span>
+            <span>
+              <label for="reviewer_rating" class="space"
+                ><span style="color: red">*</span>Rating:</label
+              >
+              <input
+                type="number"
+                name="reviewer_rating"
+                id="reviewer_rating"
+                min="0"
+                max="5"
+                value="0"
+              />
+            </span>
+            <button id="reviewBtn">Leave Review</button>
+          </span>
+          <div class="comment">
+            <label for="reviewer_comment"><span style="color: red;">*</span>Comment:</label>
+            <textarea id="reviwer_comment" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+        <hr />
+        
+      </div>
+    </main>
+    <script src="main.js"></script>
+    <script src="bathroom_details.js"></script>
+  </body>
+</html>
